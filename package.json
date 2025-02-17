@@ -1,0 +1,30 @@
+{
+  "name": "infamous",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"yarn workspace frontend dev\" \"yarn workspace @infamous/api-gateway dev\" \"yarn workspace @infamous/auth-service dev\" \"yarn workspace @infamous/user-service dev\"",
+    "install-all": "yarn install",
+    "build": "yarn workspaces run build",
+    "start": "yarn workspaces run start",
+    "dev-ts": "ts-node --loader ts-node/esm path/to/your/script.ts",
+    "dev-all": "yarn workspaces foreach --from . run dev"
+  },
+  "workspaces": {
+    "packages": [
+      "apps/frontend",
+      "apps/backend/*",
+      "shared"
+    ]
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
+  }
+}
